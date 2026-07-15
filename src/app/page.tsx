@@ -5,6 +5,7 @@ import BottleCarousel from "@/components/home/BottleCarousel";
 import BespokeSteps from "@/components/home/BespokeSteps";
 import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import ProductCard from "@/components/shop/ProductCard";
+import LeadAccessForm from "@/components/home/LeadAccessForm";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -142,6 +143,22 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Lead / access form */}
+      <section className="relative overflow-hidden border-t border-brass/15 bg-charcoal-950">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(70% 60% at 50% 0%, rgba(2,48,71,0.55), transparent 70%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-section">
+          <Reveal>
+            <LeadAccessForm />
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }
