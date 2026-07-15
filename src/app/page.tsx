@@ -3,7 +3,7 @@ import { products } from "@/data/products";
 import Hero from "@/components/home/Hero";
 import BottleCarousel from "@/components/home/BottleCarousel";
 import BespokeSteps from "@/components/home/BespokeSteps";
-import LiquidBackdrop from "@/components/three/LiquidBackdrop";
+import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import ProductCard from "@/components/shop/ProductCard";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -16,20 +16,19 @@ export default function HomePage() {
   return (
     <>
       {/* House manifesto — the opening statement, above the hero */}
-      <section className="grain relative overflow-hidden border-b border-brass/15 bg-charcoal-950">
-        {/* Flowing whisky-liquid shader behind the statement */}
-        <LiquidBackdrop className="absolute inset-0" />
+      <section className="grain relative overflow-hidden border-b border-brass/15 bg-petrol">
+        <PetrolLiquidBackdrop />
         {/* Legibility veil so the quote reads over the moving liquid */}
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 z-[1]"
           style={{
             background:
-              "radial-gradient(90% 80% at 50% 45%, rgba(20,17,13,0.3), rgba(20,17,13,0.62)), linear-gradient(to bottom, rgba(20,17,13,0.5), transparent 22%, transparent 74%, rgba(20,17,13,0.62))",
+              "radial-gradient(90% 80% at 50% 45%, rgba(2,48,71,0.25), rgba(1,24,40,0.55)), linear-gradient(to bottom, rgba(1,24,40,0.45), transparent 22%, transparent 74%, rgba(1,24,40,0.55))",
           }}
         />
         {/* Always visible — this is the first thing above the fold, so it must
             not depend on a scroll-reveal trigger. */}
-        <div className="animate-fade-up relative mx-auto max-w-container px-6 pt-32 pb-16 text-center md:pt-40 md:pb-24">
+        <div className="animate-fade-up relative z-10 mx-auto max-w-container px-6 pt-32 pb-16 text-center md:pt-40 md:pb-24">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/emblem.png"
@@ -74,8 +73,9 @@ export default function HomePage() {
       </section>
 
       {/* Heritage / trust signals */}
-      <section className="border-y border-brass/15 bg-charcoal-900/50">
-        <div className="mx-auto grid max-w-container gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="relative overflow-hidden border-y border-brass/15 bg-petrol">
+        <PetrolLiquidBackdrop />
+        <div className="relative z-10 mx-auto grid max-w-container gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { k: "Single Cask", v: "Every bottling from one barrel — never blended." },
             { k: "Natural", v: "Non chill-filtered, no added colouring, cask strength." },
@@ -119,8 +119,9 @@ export default function HomePage() {
 
       {/* Allocated release spotlight */}
       {allocated && (
-        <section className="border-t border-brass/15 bg-gradient-to-b from-charcoal-900/60 to-charcoal-950">
-          <div className="mx-auto grid max-w-container items-center gap-10 px-6 py-24 md:grid-cols-[1.2fr_1fr]">
+        <section className="relative overflow-hidden border-t border-brass/15 bg-gradient-to-b from-petrol/80 to-charcoal-950">
+        <PetrolLiquidBackdrop />
+          <div className="relative z-10 mx-auto grid max-w-container items-center gap-10 px-6 py-24 md:grid-cols-[1.2fr_1fr]">
             <Reveal>
               <p className="eyebrow">By Allocation</p>
               <h2 className="mt-4 font-display text-display-md text-cream-100">
@@ -136,7 +137,7 @@ export default function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <ProductCard product={allocated} />
+              <ProductCard product={allocated} tone="onPetrol" />
             </Reveal>
           </div>
         </section>

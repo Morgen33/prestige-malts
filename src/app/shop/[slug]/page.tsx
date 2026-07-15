@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllProductIds, getProduct, products } from "@/data/products";
 import { ageLabel } from "@/lib/format";
 import BottleViewer from "@/components/three/BottleViewer";
+import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import ProductCard from "@/components/shop/ProductCard";
 import AddToCart from "@/components/shop/AddToCart";
 import { Chip, ScarcityBadge } from "@/components/ui/ScarcityBadge";
@@ -88,7 +89,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
           {/* Detail */}
           <div>
-            <p className="eyebrow">
+            <p className="text-[0.75rem] uppercase tracking-[0.28em] text-cerulean">
               {product.region} · Single Cask {product.caskNumber}
             </p>
             <h1 className="mt-4 font-display text-display-md text-cream-100">
@@ -99,6 +100,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
+              <Chip tone="cerulean">{product.region}</Chip>
               {product.isLimited && <Chip tone="brass">Limited Release</Chip>}
               <Chip tone="muted">Non Chill-Filtered</Chip>
               <Chip tone="muted">Natural Colour</Chip>
@@ -155,8 +157,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       </div>
 
       {/* Related */}
-      <section className="border-t border-brass/15 bg-charcoal-900/40">
-        <div className="mx-auto max-w-container px-6 py-section">
+      <section className="relative overflow-hidden border-t border-brass/15 bg-petrol/80">
+        <PetrolLiquidBackdrop />
+        <div className="relative z-10 mx-auto max-w-container px-6 py-section">
           <Reveal>
             <p className="eyebrow">You may also admire</p>
             <h2 className="mt-4 font-display text-display-sm text-cream-100">

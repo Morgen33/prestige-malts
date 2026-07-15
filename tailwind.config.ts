@@ -43,6 +43,20 @@ const config: Config = {
           light: "#cdaa74",
           dark: "#8f6f3f",
         },
+        // Petrol navy — cooler section/panel surfaces (not body bg)
+        petrol: {
+          DEFAULT: "#023047",
+          950: "#011828",
+          900: "#023047",
+          800: "#0a4058",
+        },
+        // Cerulean — sparse provenance accents only
+        cerulean: {
+          DEFAULT: "#0077B6",
+          400: "#1a8fc4",
+          500: "#0077B6",
+          600: "#005f92",
+        },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],

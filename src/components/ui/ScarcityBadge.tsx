@@ -7,12 +7,13 @@ export function Chip({
   tone = "brass",
 }: {
   children: React.ReactNode;
-  tone?: "brass" | "amber" | "muted";
+  tone?: "brass" | "amber" | "muted" | "cerulean";
 }) {
   const tones = {
     brass: "border-brass/40 text-brass-light",
     amber: "border-amber-500/50 text-amber-300 bg-amber-500/10",
     muted: "border-charcoal-600 text-cream-200/70",
+    cerulean: "border-cerulean/40 text-cerulean bg-cerulean/10",
   } as const;
   return (
     <span

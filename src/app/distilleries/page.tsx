@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { distilleries, bottlingsFor } from "@/data/distilleries";
 import { formatPrice, ageLabel } from "@/lib/format";
+import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -73,7 +74,7 @@ export default function DistilleriesPage() {
                         <h2 className="font-display text-3xl text-cream-100 md:text-4xl">
                           {d.name}
                         </h2>
-                        <p className="text-[11px] uppercase tracking-[0.22em] text-amber-400">
+                        <p className="text-[11px] uppercase tracking-[0.22em] text-cerulean">
                           {d.region}
                         </p>
                       </div>
@@ -133,8 +134,9 @@ export default function DistilleriesPage() {
       </section>
 
       {/* ————— Closing ————— */}
-      <section className="border-t border-brass/15 bg-charcoal-900/50">
-        <div className="mx-auto max-w-container px-6 py-20 text-center">
+      <section className="relative overflow-hidden border-t border-brass/15 bg-petrol">
+        <PetrolLiquidBackdrop />
+        <div className="relative z-10 mx-auto max-w-container px-6 py-20 text-center">
           <Reveal>
             <p className="mx-auto max-w-2xl font-display text-display-sm text-cream-100">
               A cask from one of these houses,{" "}

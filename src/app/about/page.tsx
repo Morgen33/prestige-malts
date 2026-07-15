@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -147,31 +148,34 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <dl className="grid gap-px border border-brass/15 bg-brass/15 sm:grid-cols-2">
-              {DETAILS.map(([term, value]) => (
-                <div key={term} className="bg-charcoal-900/90 p-8">
-                  <dt className="text-[10px] uppercase tracking-[0.24em] text-amber-400">
-                    {term}
-                  </dt>
-                  <dd className="mt-3 whitespace-pre-line text-sm leading-relaxed text-cream-100">
-                    {term === "Telephone" ? (
-                      <a href="tel:+442076610264" className="hover:text-amber-300">
-                        {value}
-                      </a>
-                    ) : term === "Email" ? (
-                      <a
-                        href="mailto:info@prestigemalts.com"
-                        className="hover:text-amber-300"
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      value
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="relative overflow-hidden border border-brass/15 bg-petrol">
+              <PetrolLiquidBackdrop />
+              <dl className="relative z-10 grid gap-px bg-brass/15 sm:grid-cols-2">
+                {DETAILS.map(([term, value]) => (
+                  <div key={term} className="bg-petrol/70 p-8 backdrop-blur-[2px]">
+                    <dt className="text-[10px] uppercase tracking-[0.24em] text-amber-400">
+                      {term}
+                    </dt>
+                    <dd className="mt-3 whitespace-pre-line text-sm leading-relaxed text-cream-100">
+                      {term === "Telephone" ? (
+                        <a href="tel:+442076610264" className="hover:text-amber-300">
+                          {value}
+                        </a>
+                      ) : term === "Email" ? (
+                        <a
+                          href="mailto:info@prestigemalts.com"
+                          className="hover:text-amber-300"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        value
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
             <p className="mt-6 text-xs leading-relaxed text-cream-200/40">
               Prestige Malts Ltd · Company No. 13573512 (England &amp; Wales) ·
               AWRS XQAW00000120450

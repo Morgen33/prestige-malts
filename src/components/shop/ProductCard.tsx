@@ -14,16 +14,26 @@ import { ScarcityBadge } from "@/components/ui/ScarcityBadge";
 export default function ProductCard({
   product,
   forceFallback = false,
+  tone = "default",
 }: {
   product: Product;
   forceFallback?: boolean;
+  /** Bottle panel wash for petrol sections. */
+  tone?: "default" | "onPetrol";
 }) {
+  const onPetrol = tone === "onPetrol";
+
   return (
     <Link
       href={`/shop/${product.id}`}
       className="group relative flex flex-col overflow-hidden border border-brass/15 bg-charcoal-900/40 transition-all duration-500 ease-silk hover:-translate-y-1.5 hover:border-brass/40 hover:shadow-[0_28px_80px_-24px_rgba(200,149,47,0.32)]"
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-charcoal-950">
+      <div
+        className={`relative aspect-[4/5] w-full overflow-hidden ${
+          onPetrol ? "" : "bg-charcoal-950"
+        }`}
+        style={onPetrol ? { backgroundColor: "#0c1a22" } : undefined}
+      >
         {/* Warm pool of light behind the bottle */}
         <div
           className="pointer-events-none absolute inset-0 opacity-80 transition-opacity duration-700 group-hover:opacity-100"
@@ -46,7 +56,7 @@ export default function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col border-t border-brass/15 p-6">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-amber-400">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-cerulean">
           {product.region} · {product.caskType}
         </p>
         <h3 className="mt-2 font-display text-2xl leading-tight text-cream-100">

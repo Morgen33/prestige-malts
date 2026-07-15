@@ -16,7 +16,7 @@ Built with **Next.js (App Router) + TypeScript + Tailwind**, a data-driven
 
 ```bash
 npm install
-npm run dev        # http://localhost:3007
+npm run dev        # http://localhost:3008
 npm run build      # production build (static export of all routes)
 npm run typecheck  # tsc --noEmit
 npm run lint
@@ -24,9 +24,9 @@ npm run lint
 
 Requires Node 18.18+ (developed on Node 22).
 
-The dev server runs on **port 3007** (`next dev -p 3007`) to avoid colliding
-with other local projects on 3000. Change it in `package.json` and
-`.claude/launch.json` if you prefer 3000.
+The dev server runs on **port 3008** (`next dev -p 3008`) to avoid colliding
+with other local projects on 3000/3007. Change it in `package.json` and
+`.claude/launch.json` if you prefer another port.
 
 ---
 

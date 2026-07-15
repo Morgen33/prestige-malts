@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProduct } from "@/data/products";
 import BottleViewer from "@/components/three/BottleViewer";
+import PetrolLiquidBackdrop from "@/components/three/PetrolLiquidBackdrop";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import EnquiryForm from "@/components/bespoke/EnquiryForm";
@@ -186,8 +187,9 @@ export default function BespokePage() {
       </section>
 
       {/* ————— Why the house ————— */}
-      <section className="border-y border-brass/15 bg-charcoal-900/50">
-        <div className="mx-auto max-w-container px-6 py-section">
+      <section className="relative overflow-hidden border-y border-brass/15 bg-petrol">
+        <PetrolLiquidBackdrop />
+        <div className="relative z-10 mx-auto max-w-container px-6 py-section">
           <Reveal className="text-center">
             <p className="eyebrow">Why Prestige Malts</p>
             <h2 className="mx-auto mt-4 max-w-2xl font-display text-display-md text-cream-100">
@@ -197,7 +199,7 @@ export default function BespokePage() {
           <div className="mt-16 grid gap-10 md:grid-cols-3">
             {PILLARS.map((p, i) => (
               <Reveal key={p.numeral} delay={i * 0.08}>
-                <div className="h-full border border-brass/15 bg-charcoal-950/40 p-9">
+                <div className="h-full border border-brass/15 bg-petrol-950/50 p-9">
                   <p className="font-display text-4xl text-brass">{p.numeral}</p>
                   <div className="my-5 h-px w-10 bg-brass/40" />
                   <h3 className="font-display text-2xl text-cream-100">{p.title}</h3>
@@ -218,9 +220,10 @@ export default function BespokePage() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          <Reveal>
-            <div className="grain relative h-full overflow-hidden border border-brass/15 bg-charcoal-950 p-10 md:p-12">
+        <div className="relative mt-14 overflow-hidden border border-brass/15 bg-petrol">
+          <PetrolLiquidBackdrop />
+          <div className="relative z-10 grid lg:grid-cols-2">
+            <div className="grain relative h-full overflow-hidden border-b border-brass/15 p-10 md:p-12 lg:border-b-0 lg:border-r">
               <p className="font-display text-3xl text-amber-300">In Bond</p>
               <div className="my-6 h-px w-12 bg-brass/40" />
               <p className="text-sm leading-relaxed text-cream-200/65">
@@ -242,10 +245,8 @@ export default function BespokePage() {
                 ))}
               </ul>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="grain relative h-full overflow-hidden border border-brass/15 bg-charcoal-950 p-10 md:p-12">
+            <div className="grain relative h-full overflow-hidden p-10 md:p-12">
               <p className="font-display text-3xl text-amber-300">Small-Batch Bottling</p>
               <div className="my-6 h-px w-12 bg-brass/40" />
               <p className="text-sm leading-relaxed text-cream-200/65">
@@ -267,7 +268,7 @@ export default function BespokePage() {
                 ))}
               </ul>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
