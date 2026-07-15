@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens as CSS custom properties.
+ * Mirrored from tailwind.config.ts so non-Tailwind consumers (the 3D scene,
+ * the canvas label generator) can read the same palette.
+ */
+:root {
+  --charcoal-950: #141210;
+  --charcoal-900: #1a1815;
+  --charcoal-800: #211e1b;
+  --charcoal-700: #2e2a25;
+  --charcoal-600: #3c3730;
+
+  --amber-300: #e6c983;
+  --amber-400: #e0b45c;
+  --amber-500: #c8952f;
+  --amber-600: #a9791f;
+
+  --cream-50: #faf6ee;
+  --cream-100: #f4ede0;
+  --cream-200: #e9ddc8;
+
+  --brass: #b89258;
+
+  --bg: var(--charcoal-800);
+  --fg: var(--cream-100);
+
+  color-scheme: dark;
+}
+
+* {
+  border-color: rgba(184, 146, 88, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Editorial small-caps eyebrow */
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber-400);
+}
+
+/* Subtle grain overlay for that aged, tactile feel */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hairline rule with brass fade */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 146, 88, 0.4),
+    transparent
+  );
+}
+
+::selection {
+  background: var(--amber-500);
+  color: var(--charcoal-950);
+}
+
+/* Gold-foil gradient type — reserved for one phrase per view. */
+.gold-text {
+  background: linear-gradient(
+    105deg,
+    #e6c983 0%,
+    #c8952f 40%,
+    #f0d9a0 62%,
+    #a9791f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Inset hairline frame — the members'-club border around full-bleed moments.
+   The top edge is dropped below the fixed header so the emblem never crosses
+   the rule. */
+.hairline-frame::after {
+  content: "";
+  position: absolute;
+  inset: 5.5rem 1.25rem 1.25rem;
+  border: 1px solid rgba(184, 146, 88, 0.18);
+  pointer-events: none;
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .hairline-frame::after {
+    inset: 6.5rem 2rem 2rem;
+  }
+}
+
+/* Hide the native scrollbar on drag-to-scroll carousels. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Flowing "liquid whisky" backdrop — drifting amber light, blurred to flow. */
+.liquid-inner {
+  position: absolute;
+  inset: -25%;
+  filter: blur(52px) saturate(1.15);
+}
+.liquid-blob {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.liquid-b1 {
+  left: -8%;
+  top: -12%;
+  background: radial-gradient(circle, rgba(200, 149, 47, 0.55), transparent 62%);
+  animation: liquidA 9s ease-in-out infinite alternate;
+}
+.liquid-b2 {
+  right: -12%;
+  top: -4%;
+  background: radial-gradient(circle, rgba(150, 82, 24, 0.62), transparent 60%);
+  animation: liquidB 12s ease-in-out infinite alternate;
+}
+.liquid-b3 {
+  left: 18%;
+  bottom: -18%;
+  background: radial-gradient(circle, rgba(224, 180, 74, 0.42), transparent 60%);
+  animation: liquidC 10s ease-in-out infinite alternate;
+}
+.liquid-b4 {
+  right: 14%;
+  bottom: -12%;
+  background: radial-gradient(circle, rgba(74, 42, 16, 0.7), transparent 56%);
+  animation: liquidA 14s ease-in-out infinite alternate-reverse;
+}
+@keyframes liquidA {
+  from { transform: translate(-14%, -10%) scale(0.95); }
+  to   { transform: translate(22%, 16%) scale(1.5); }
+}
+@keyframes liquidB {
+  from { transform: translate(18%, -14%) scale(1.35); }
+  to   { transform: translate(-18%, 20%) scale(0.9); }
+}
+@keyframes liquidC {
+  from { transform: translate(-12%, 14%) scale(1); }
+  to   { transform: translate(16%, -18%) scale(1.45); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid-blob { animation: none !important; }
+}
