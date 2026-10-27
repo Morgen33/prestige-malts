@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { getProduct } from "@/data/products";
-import BottleViewer from "@/components/three/BottleViewer";
 import Reveal from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import EnquiryForm from "@/components/bespoke/EnquiryForm";
@@ -11,6 +9,25 @@ export const metadata: Metadata = {
     "Buy, sell or trade rare single-cask Scotch whisky with Prestige Malts. Personalised consultations, honest valuations, and full provenance.",
 };
 
+const CASK = {
+  distillery: "Bowmore",
+  region: "Islay",
+  caskNumber: "90021003",
+  caskType: "Sherry Hogshead",
+  distilled: "23/09/1997",
+  regauge: "20/02/2025",
+  rla: "97",
+  abv: "53.7%",
+} as const;
+
+const CASK_ROWS: { label: string; value: string; note?: string }[] = [
+  { label: "Cask number", value: CASK.caskNumber },
+  { label: "Cask type", value: CASK.caskType },
+  { label: "Distilled", value: CASK.distilled },
+  { label: `RLA (${CASK.regauge})`, value: CASK.rla, note: "Estimate" },
+  { label: "Strength", value: CASK.abv, note: "Estimate" },
+];
+
 const STEPS = [
   ["01", "Tell us what you hold", "Share the bottles or casks you own — distillery, age, cask number, condition. Photographs help; a full list helps more."],
   ["02", "We value it", "Our team appraises against live auction results and private-treaty demand, and returns a considered, transparent figure — not a lowball."],
@@ -19,8 +36,6 @@ const STEPS = [
 ];
 
 export default function BuyAndSellPage() {
-  const showcase = getProduct("glenfarclas-1998-cask-812")!;
-
   return (
     <>
       {/* ————— Hero ————— */}
@@ -69,46 +84,85 @@ export default function BuyAndSellPage() {
 
       {/* ————— Buy ————— */}
       <section className="mx-auto max-w-container px-6 py-section">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal className="order-2 lg:order-1">
-            <p className="eyebrow">Buy Our Whiskies</p>
-            <h2 className="mt-4 font-display text-display-md text-cream-100">
-              Bottles you will not find on a shelf
-            </h2>
-            <div className="mt-8 space-y-6 text-base leading-relaxed text-cream-200/65">
-              <p>
-                Every release in our cellar is a single cask — finite,
-                unrepeatable, bottled at natural colour and cask strength. We
-                buy well, so you buy well: full provenance on every label, and
-                an honest account of what is in the glass.
-              </p>
-              <p>
-                Looking for something specific — a particular distillery,
-                vintage or cask type that is not currently listed? We hold and
-                broker parcels that never reach the public catalogue. Tell us
-                what you are hunting and we will go looking.
-              </p>
-            </div>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <ButtonLink href="#enquiry" variant="solid">
-                Ask us to source a bottle
-              </ButtonLink>
-            </div>
-          </Reveal>
+        <Reveal className="max-w-2xl">
+          <p className="eyebrow">Buy Our Whiskies</p>
+          <h2 className="mt-4 font-display text-display-md text-cream-100">
+            Bottles you will not find on a shelf
+          </h2>
+          <div className="mt-8 space-y-6 text-base leading-relaxed text-cream-200/65">
+            <p>
+              Every release in our cellar is a single cask — finite,
+              unrepeatable, bottled at natural colour and cask strength. We
+              buy well, so you buy well: full provenance on every label, and
+              an honest account of what is in the glass.
+            </p>
+            <p>
+              Looking for something specific — a particular distillery,
+              vintage or cask type that is not currently listed? We hold and
+              broker parcels that never reach the public catalogue. Tell us
+              what you are hunting and we will go looking.
+            </p>
+          </div>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <ButtonLink href="#enquiry" variant="solid">
+              Ask us to source a bottle
+            </ButtonLink>
+          </div>
+        </Reveal>
 
-          <Reveal delay={0.1} className="order-1 lg:order-2">
-            <div className="relative aspect-[4/5] w-full overflow-hidden border border-brass/15 bg-charcoal-950">
+        <div className="mt-16 grid items-center gap-6 lg:mt-20 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:gap-8">
+          <Reveal>
+            <div className="relative flex flex-col justify-between border border-brass/15 bg-charcoal-950 p-8 md:p-10">
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(60% 55% at 50% 42%, rgba(200,149,47,0.16), transparent 70%)",
+                    "radial-gradient(70% 55% at 30% 12%, rgba(200,149,47,0.16), transparent 70%)",
                 }}
               />
-              <BottleViewer product={showcase} interactive autoRotate={false} className="h-full w-full" />
-              <p className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-[0.24em] text-cream-200/40">
-                Drag to rotate
+              <div className="relative">
+                <p className="eyebrow">{CASK.region} · In bond</p>
+                <h3 className="mt-5 font-display text-5xl text-cream-100">
+                  {CASK.distillery}
+                </h3>
+                <p className="mt-3 font-display text-xl italic text-brass-light">
+                  {CASK.caskType}
+                </p>
+              </div>
+              <dl className="relative mt-8 border-t border-brass/20">
+                {CASK_ROWS.map((row) => (
+                  <div
+                    key={row.label}
+                    className="flex items-baseline justify-between gap-4 border-b border-brass/15 py-3.5"
+                  >
+                    <dt className="text-[11px] uppercase tracking-[0.18em] text-cream-200/45">
+                      {row.label}
+                    </dt>
+                    <dd className="shrink-0 text-right font-display text-xl text-cream-100">
+                      {row.value}
+                      {row.note ? (
+                        <span className="ml-2 font-sans text-[10px] uppercase tracking-[0.18em] text-cream-200/40">
+                          {row.note}
+                        </span>
+                      ) : null}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="relative mt-5 text-[10px] uppercase tracking-[0.22em] text-cream-200/35">
+                RLA · regauged litres of alcohol
               </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="relative aspect-[3/2] overflow-hidden border border-brass/15">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/bowmore-1997.jpg"
+                alt="Bowmore casks distilled in 1997, racked along a warehouse aisle"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </Reveal>
         </div>
