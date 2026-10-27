@@ -28,13 +28,13 @@ export const distilleries: Distillery[] = [
       "Oily, saline, quietly smoky — whisky made the way it was in 1828.",
   },
   {
-    id: "bowmore",
-    name: "Bowmore",
-    region: "Islay",
-    founded: 1779,
+    id: "glenfarclas",
+    name: "Glenfarclas",
+    region: "Speyside",
+    founded: 1836,
     summary:
-      "On the shore of Loch Indaal, Bowmore is the oldest distillery still working on Islay. Peat from the island and long years in sherry wood give a spirit that is both maritime and deeply fruited.",
-    character: "Coastal peat and sherry — smoke, citrus, and dark fruit.",
+      "Six generations of the Grant family have run Glenfarclas without interruption, filling stout sherry butts and letting Speyside spirit take its time. The old warehouses hold some of Scotland's deepest stocks.",
+    character: "Sherried depth — Christmas cake, old leather, patient oak.",
   },
   {
     id: "caol-ila",
