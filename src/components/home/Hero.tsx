@@ -64,10 +64,7 @@ export default function Hero({ product }: { product: Product }) {
             {...fade(0.4)}
             className="mt-11 flex flex-wrap items-center gap-4"
           >
-            <ButtonLink href="/shop" variant="solid">
-              Explore the Cellar
-            </ButtonLink>
-            <ButtonLink href="/bespoke" variant="outline">
+            <ButtonLink href="/bespoke" variant="solid">
               Bespoke Bottling
             </ButtonLink>
           </motion.div>

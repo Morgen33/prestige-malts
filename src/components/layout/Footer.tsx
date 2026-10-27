@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const shopLinks = [
-  { href: "/shop", label: "The Cellar" },
   { href: "/bespoke", label: "Bespoke Bottling" },
   { href: "/buy-and-sell", label: "Buy & Sell" },
   { href: "/distilleries", label: "Distilleries" },

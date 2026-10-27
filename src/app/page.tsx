@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { products } from "@/data/products";
 import Hero from "@/components/home/Hero";
 import BottleCarousel from "@/components/home/BottleCarousel";
@@ -53,19 +52,11 @@ export default function HomePage() {
 
       {/* Featured bottlings */}
       <section className="mx-auto max-w-container px-6 py-section">
-        <Reveal className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div>
-            <p className="eyebrow">The Current Release</p>
-            <h2 className="mt-4 max-w-xl font-display text-display-md text-cream-100">
-              Recently drawn from the cask
-            </h2>
-          </div>
-          <Link
-            href="/shop"
-            className="shrink-0 text-xs uppercase tracking-[0.2em] text-amber-300 hover:text-amber-400"
-          >
-            View all →
-          </Link>
+        <Reveal>
+          <p className="eyebrow">The Current Release</p>
+          <h2 className="mt-4 max-w-xl font-display text-display-md text-cream-100">
+            Recently drawn from the cask
+          </h2>
         </Reveal>
 
         <Reveal className="mt-14">

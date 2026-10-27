@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getAllProductIds, getProduct, products } from "@/data/products";
 import { ageLabel } from "@/lib/format";
 import BottleViewer from "@/components/three/BottleViewer";
@@ -52,13 +51,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     <>
       <div className="mx-auto max-w-container px-6 pt-28 pb-section">
         {/* Breadcrumb */}
-        <nav className="mb-8 text-xs uppercase tracking-[0.18em] text-cream-200/50">
-          <Link href="/shop" className="hover:text-amber-300">
-            The Cellar
-          </Link>
-          <span className="mx-2 text-brass/50">/</span>
-          <span className="text-cream-200/80">{product.name}</span>
-        </nav>
+        <p className="mb-8 text-xs uppercase tracking-[0.18em] text-cream-200/80">
+          {product.name}
+        </p>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Interactive bottle */}

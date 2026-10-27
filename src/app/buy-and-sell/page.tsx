@@ -62,9 +62,6 @@ export default function BuyAndSellPage() {
               <ButtonLink href="#enquiry" variant="solid">
                 Request a Valuation
               </ButtonLink>
-              <ButtonLink href="/shop" variant="outline">
-                Browse the Cellar
-              </ButtonLink>
             </div>
           </Reveal>
         </div>
@@ -93,11 +90,8 @@ export default function BuyAndSellPage() {
               </p>
             </div>
             <div className="mt-9 flex flex-wrap gap-4">
-              <ButtonLink href="/shop" variant="solid">
-                View the Cellar
-              </ButtonLink>
-              <ButtonLink href="#enquiry" variant="ghost">
-                Ask us to source a bottle →
+              <ButtonLink href="#enquiry" variant="solid">
+                Ask us to source a bottle
               </ButtonLink>
             </div>
           </Reveal>

@@ -23,8 +23,8 @@ export default function ComingSoon({
         {body}
       </p>
       <div className="mt-10">
-        <ButtonLink href="/shop" variant="outline">
-          Browse the Cellar
+        <ButtonLink href="/" variant="outline">
+          Return home
         </ButtonLink>
       </div>
     </div>

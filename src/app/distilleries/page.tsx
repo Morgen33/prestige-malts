@@ -143,10 +143,7 @@ export default function DistilleriesPage() {
               <em className="gold-text">bottled under your name?</em>
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <ButtonLink href="/shop" variant="solid">
-                Browse the Cellar
-              </ButtonLink>
-              <ButtonLink href="/bespoke" variant="outline">
+              <ButtonLink href="/bespoke" variant="solid">
                 Bespoke Bottling
               </ButtonLink>
             </div>
